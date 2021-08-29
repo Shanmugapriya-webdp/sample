@@ -10,13 +10,10 @@
       <option value="">Select City</option>
     </select>
     <br /><br />
-     <input type="button" name="Street" value="Get street Name" id="Street">
 
-
-
-<!--          <select name="Street" id="Street" class="form-control input-lg">-->
-<!--      <option value="">Select street</option>-->
-<!--    </select>-->
+<select name="Street" id="Street" class="form-control input-lg">
+	<option value="">Select street</option>
+</select>
   </div>
 </div>
 
@@ -37,6 +34,7 @@ $('#District').html(html_code);
 });
 
 function updateDropdown(District, City, Street) {
+  let html_code;
   if (!City) {
     html_code = '<option value="">Select City</option>';
     $.each(Area, function (index, value) {
@@ -68,7 +66,9 @@ $('#District, #City, #Street').on('change', function () {
   } 
   
   if (this.id == 'Street') {
-    console.log('The Street is: ' + $(this).val());
+    var District = $('#District').val();
+    var City = $('#City').val();
+    updateDropdown(District, City, null);
   } else {
     var District = $('#District').val();
     var City = $('#City').val();
